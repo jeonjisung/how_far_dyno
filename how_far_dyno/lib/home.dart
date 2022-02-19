@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:how_far_dyno/bouldering.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
@@ -27,7 +28,10 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    print("Click event on Container");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Bouldering()),
+                    );
                   },
                   child: Ink(
                       color: Color(0xff009A31),
