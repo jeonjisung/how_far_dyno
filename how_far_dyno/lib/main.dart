@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget example1 = SplashScreenView(
       navigateRoute: Home(),
-      duration: 5000,
+      duration: 1000,
       // imageSrc: "splash_image.jpg",
       // imageSize: 200,
       text: "어디까지다이노",
