@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 class Inside extends StatelessWidget {
   const Inside({Key key}) : super(key: key);
@@ -22,6 +25,37 @@ class Inside extends StatelessWidget {
             icon: Icon(Icons.arrow_back),
           ),
         ),
+        body: Sample(),
+      ),
+    );
+  }
+}
+
+class Sample extends StatefulWidget {
+  const Sample({Key key}) : super(key: key);
+
+  @override
+  _SampleState createState() => _SampleState();
+}
+
+class _SampleState extends State<Sample> {
+  Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+        myLocationButtonEnabled: true,
+        myLocationEnabled: true,
       ),
     );
   }
